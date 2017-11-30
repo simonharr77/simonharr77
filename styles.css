@@ -3,9 +3,8 @@ body{
 }
 
 .newHeadings{
-  text-indent:825px;
   text-decoration: underline;
-  font-family:Harrington;
+  font-family:sans-serif;
   background-color: #ABABAB;
   width: 100%;
   height:100px;
