@@ -1,70 +1,83 @@
-let x;
-let y;
-let speedX;
-let speedY;
+//Create two variables that will store the new objects from the class Circle
+let arraySize = 1;
+let circleArray = [arraySize];
 
-
-function setup(){
-  var canvas= createCanvas (800, 800)
+function setup() {
+  var canvas= createCanvas (594, 841)
   canvas.parent("myContainer");
-  x = width/2;
-  y = height/2;
-
-  speedX = random(-10., 30);
-  speedY = random(-10., 30.);
-  r = random (255);
-  g = random (255);
-  b = random (255);
-
-  textSize(16);
-  rectMode(CENTER);
-  background(r,g,b);
-
+  w = 1;
+  l = 1;
+  for (let i=0; i<circleArray.length; i++){
+    circleArray[i] = new Circle(w, l, random(-1, 3), random(-1, 3), random(1, 1));
+  }
 }
 
-function draw(){
+function mouseClicked(){
+  circleArray.push(new Circle(w, l, random(-1, 3), random(-1, 3), random(1, 1)));
+}
 
-  l = random(30);
-  w = random(30);
-  p = random(y,x);
-  s = random(w/8,l/8);
-  x = x + speedX;
-  y = y + speedY;
-  strokeWeight(s);
+function draw() {
+  for (let i=0; i<circleArray.length; i++){
+    circleArray[i].moveFunction();
+    circleArray[i].displayCircle();
+    num = random(5);
+    num2 = random(5);
+    num3 = random(5)
+    num4 = num+num2/num3
+    w = num4;
+    l = num4;
+  }
+}
 
+//Definition of the class Circle
+class Circle{
 
-  if (x>801){
-    fill(mouseX,mouseY,r);
-    x = p;
-    speedX = random(-5., 15.);
-    speedY = random(-5., 15.);
+  constructor(x, y, speedX, speedY, size){
+    //Setup of class' variables
+    this.x = 1;
+    this.y = 1;
+    this.speedX = speedX;
+    this.speedY = speedY;
+    this.size = 1;
+
+    this.rd = random(255);
+    this.grn = random(255);
+    this.bl = random(255);
+    this.a = random(10,130);
+    this.st = random(1,3);
   }
 
-  if (x<-1){
-    fill(mouseX,mouseY,r);
-    x = p;
-    speedX = random(-5., 15.);
-    speedY = random(-5., 15.);
+  //Class function that takes care of motion and collision
+  moveFunction(){
+    //Motion system - current position and speed
+    this.x = this.x + this.speedX;
+    this.y = this.y + this.speedY;
+
+    //Based on boundaries collision, reverse direction for x and y
+    if (this.x > width || this.x<0){
+      this.speedX *= -1;
+    }
+    if (this.y > (height) || this.y<0){
+      this.speedY *= -1;
+
+}
   }
 
-  if (y>801){
-    fill(mouseX,mouseY,r);
-    y = p;
-    speedX = random(-5., 15.);
-    speedY = random(-5., 15.);
+  //Class function that displays the ellipse
+  displayCircle(){
+    strokeWeight(this.st);
+    var mouse1 = map(mouseY, 0, height, 0, 255);
+    var mouse2 = map(mouseX, 0, width, 0, 255);
+    var mouse3 = map(mouseY, 0, width, 255, 0);
+    this.fillcol = color(this.rd, this.grn, this.bl, this.a);
+    fill(mouse1, mouse2,mouse3, this.a);
+    let num = random(5);
+    let num2 = random(5);
+    let num3 = random(5)
+    let num4 = num+num2/num3
+    let w = num4;
+    let l = num4;
+
+    ellipse(this.x, this.y, w, l);
   }
-  if (y<-1){
-    fill(mouseX,mouseY,255);
-    y = p;
-    speedX = random(-5., 15.);
-    speedY = random(-5., 15.);
-  }
-
-  fill(mouseX,mouseY,r);
-  rect(x, y, l, w);
-  ellipse(y, x, l, w);
-  frameRate(28);
-
-
-
 }
