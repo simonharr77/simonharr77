@@ -4,15 +4,18 @@ body{
 
 .newHeadings{
   text-decoration: underline;
-  font-family:sans-serif;
-  background-color: #ABABAB;
+  text-align: center;
+  font-family:impact;
+  color:#979595;
+  background-color: #ccc;
   width: 100%;
-  height:100px;
+  height:50px;
+
 
 }
 #lastHeading{
   font-family: monospace;
-  color: #FF0000;
+  color: #ccc;
 }
 #myContainer{
 margin-left: auto;
