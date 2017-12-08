@@ -45,7 +45,6 @@ class Circle{
     this.a = random(10,130);
     this.st = random(1,3);
   }
-
   //Class function that takes care of motion and collision
   moveFunction(){
     //Motion system - current position and speed
@@ -58,10 +57,8 @@ class Circle{
     }
     if (this.y > (height) || this.y<0){
       this.speedY *= -1;
-
     }
   }
-
   //Class function that displays the ellipse
   displayCircle(){
     strokeWeight(this.st);
