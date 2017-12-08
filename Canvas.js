@@ -76,7 +76,7 @@ class Circle{
     let w = num4;
 
     //constraining the size, sizes where too big.
-    w = constrain(w, 1, 300);
-    ellipse(this.x, this.y, w, w);
+  w = constrain(w, 1, 300);
+  ellipse(this.x, this.y, w, w);
   }
 }
