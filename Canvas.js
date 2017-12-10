@@ -33,8 +33,8 @@ class Circle{
 
   constructor(x, y, speedX, speedY, size){
     //Setup of class' variables
-    this.x = 1;
-    this.y = 1;
+    this.x = random(594);
+    this.y = random(841);
     this.speedX = speedX;
     this.speedY = speedY;
     this.size = 1;
