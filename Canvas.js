@@ -33,17 +33,19 @@ class Circle{
 
   constructor(x, y, speedX, speedY, size){
     //Setup of class' variables
+
+//makes it spawn in a random location on the canvas
     this.x = random(594);
     this.y = random(841);
     this.speedX = speedX;
     this.speedY = speedY;
-    this.size = 1;
-
+    this.size = 1;//size of the ellipse
+//randomizing the colors
     this.rd = random(255);
     this.grn = random(255);
     this.bl = random(255);
-    this.a = random(10,130);
-    this.st = random(1,3);
+    this.a = random(10,130);//opacity
+    this.st = random(1,3);//strokeWeight
   }
   //Class function that takes care of motion and collision
   moveFunction(){
@@ -52,7 +54,7 @@ class Circle{
     this.y = this.y + this.speedY;
 
     //Based on boundaries collision, reverse direction for x and y
-    if (this.x > width || this.x<0){
+    if (this.x > width || this.x<0){//when it reaches the boundry 0 it changes direction
       this.speedX *= -1;
     }
     if (this.y > (height) || this.y<0){
@@ -61,7 +63,7 @@ class Circle{
   }
   //Class function that displays the ellipse
   displayCircle(){
-    strokeWeight(this.st);
+    strokeWeight(this.st);//random strokeweight
     //mapping color change using mouse movement
     let mouse1 = map(mouseY, 0, height, 0, 255);
     let mouse2 = map(mouseX, 0, width, 0, 255);
@@ -73,10 +75,11 @@ class Circle{
     let num2 = random(5);
     let num3 = random(5)
     let num4 = num+num2/num3
-    let w = num4;
+    let w = num4;//this is to make it more eratic and less uniform
 
     //constraining the size, sizes where too big.
     w = constrain(w, 1, 299);
+      //size and position of the ellipse
   ellipse(this.x, this.y, w, w);
   }
 }
