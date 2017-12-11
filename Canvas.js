@@ -3,7 +3,7 @@ let arraySize = 1;
 let circleArray = [arraySize];
 
 function setup() {
-  var canvas= createCanvas (594,841)
+  var canvas= createCanvas (594,841)//canvas size
   canvas.parent("myContainer"); //global for styles link
   //starting sizes
   w = 1;
